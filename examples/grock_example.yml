@@ -30,6 +30,13 @@ http://34.201.205.171/        --->     %{URI}
 
 
 
+EXAMPLE:1
+        Nov  1 03:50:11 ip-172-31-6-27 sshd[13333]: reverse mapping checking getaddrinfo for ws188-157.158.220.rcil.gov.in [220.158.157.188] failed - P
+    GROK:
+        %{MONTH}%{SPACE}%{MONTHDAY}%{SPACE}%{TIME}%{SPACE}%{HOST}%{SPACE}%{WORD:SERVICE_NAME}\[%{NUMBER:PID}\]:%{SPACE}%{GREEDYDATA}
+    
+
+
 http {
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" ' '$status $body_bytes_sent "$http_referer" '  '"$http_user_agent" "$http_x_forwarded_for"';
 
