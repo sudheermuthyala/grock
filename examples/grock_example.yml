@@ -1,7 +1,4 @@
-220.158.157.198  12/Oct/2021:10:41:13 +0000 GET /api/catalogue/categories HTTP/1.1 404  555  http://34.201.205.171/  2.608  2.608   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36 Edg/94.0.992.38"  "-"
-
-
-(%{IPV4}|%{IPV6})%{SPACE}%{HTTPDATE}%{SPACE}%{WORD:HTTP_METHOD}%{SPACE}%{UNIXPATH}%{SPACE}%{WORD}/%{NUMBER}%{SPACE}%{NUMBER}%{SPACE}%{NUMBER}%{SPACE}%{URI}%{SPACE}%{NUMBER}%{SPACE}%{NUMBER}%{SPACE}%{QUOTEDSTRING}%{SPACE}%{QUOTEDSTRING}
+# Grok Examples
 
 220.158.157.198               --->     (%{IPV4}|%{IPV6})  
 
@@ -29,12 +26,23 @@ http://34.201.205.171/        --->     %{URI}
 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36 Edg/94.0.992.38"    ---> %{SPACE}%{QUOTEDSTRING}
 
 
+#GROCK EXAMPLES
 
-EXAMPLE:1
+```
+EXAMPLE: 1
         Nov  1 03:50:11 ip-172-31-6-27 sshd[13333]: reverse mapping checking getaddrinfo for ws188-157.158.220.rcil.gov.in [220.158.157.188] failed - P
-    GROK:
+GROK:
         %{MONTH}%{SPACE}%{MONTHDAY}%{SPACE}%{TIME}%{SPACE}%{HOST}%{SPACE}%{WORD:SERVICE_NAME}\[%{NUMBER:PID}\]:%{SPACE}%{GREEDYDATA}
-    
+                
+EXAMPLE: 2    
+        220.158.157.198  12/Oct/2021:10:41:13 +0000 GET /api/catalogue/categories HTTP/1.1 404  555  http://34.201.205.171/  2.608  2.608   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36 Edg/94.0.992.38"  "-"
+GROK:
+        (%{IPV4}|%{IPV6})%{SPACE}%{HTTPDATE}%{SPACE}%{WORD:HTTP_METHOD}%{SPACE}%{UNIXPATH}%{SPACE}%{WORD}/%{NUMBER}%{SPACE}%{NUMBER}%{SPACE}%{NUMBER}%{SPACE}%{URI}%{SPACE}%{NUMBER}%{SPACE}%{NUMBER}%{SPACE}%{QUOTEDSTRING}%{SPACE}%{QUOTEDSTRING}
+
+```    
+
+
+
 # Actuall Nginx log Formate syntax
 ```
 http {
