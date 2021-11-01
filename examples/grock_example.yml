@@ -35,10 +35,16 @@ EXAMPLE:1
     GROK:
         %{MONTH}%{SPACE}%{MONTHDAY}%{SPACE}%{TIME}%{SPACE}%{HOST}%{SPACE}%{WORD:SERVICE_NAME}\[%{NUMBER:PID}\]:%{SPACE}%{GREEDYDATA}
     
-
-
+# Actuall Nginx log Formate syntax
+```
 http {
     log_format  main  '$remote_addr - $remote_user [$time_local] "$request" ' '$status $body_bytes_sent "$http_referer" '  '"$http_user_agent" "$http_x_forwarded_for"';
 
 }
+```
+# customize Nginx log Formate syntax, as for our requirement
+```
 '$remote_addr  $time_local $request $status  $body_bytes_sent  $http_referer  $request_time  $upstream_response_time   "$http_user_agent"  "$http_x_forwarded_for"';            
+
+```
+
