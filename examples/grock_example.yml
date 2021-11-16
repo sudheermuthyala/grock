@@ -43,7 +43,7 @@ EXAMPLE: 3
         220.158.157.188  01/Nov/2021:06:26:23 +0000 GET /api/catalogue/categories HTTP/1.1 404  555  http://34.206.3.145/  2.664  2.664   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36 Edg/95.0.1020.40"  "-"
 GROK:
         (%{IPV4}|%{IPV6})  %{HTTPDATE} %{WORD:HTTP_METHOD} %{UNIXPATH} %{WORD}/%{NUMBER} %{NUMBER}  %{NUMBER}  %{URI}  %{NUMBER}  %{NUMBER}   %{QUOTEDSTRING}  %{QUOTEDSTRING}
-        
+        "(%{IPV4}|%{IPV6})  %{HTTPDATE} %{WORD:HTTP_METHOD} %{UNIXPATH} %{WORD}/%{NUMBER} %{NUMBER}  %{NUMBER}  (%{URI:URL}|-)  %{NUMBER}  %{NUMBER}   %{QUOTEDSTRING}  %{QUOTEDSTRING}"
         
 EXAMPLE: 4
         2021-11-15 11:00:21.033  INFO 4794 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/      
